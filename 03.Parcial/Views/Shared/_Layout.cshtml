@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/main.css">
+    <link href="~/materialize/css/materialize.min.css" rel="stylesheet">
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-sanitize.js"></script>
+    <script src="~/Scripts/main.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Inicio</title>
+</head>
+<body>
+    <header>
+        <div id="cabezote">
+            <h1>Academia De Baile</h1>
+        </div>
+        <nav>
+
+            <div class="nav-wrapper">
+                <a class="btn disabled">Menu</a>
+                <ul class="right hide-on-med-and-down">
+
+                    <li><a href="/Home/index"><i class="material-icons">bookmark_border</i></a></li>
+                   
+                    <li><a href="mobile.html"><i class="material-icons">supervisor_account</i></a></li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+
+
+            <p id="tel">Baila Conmigo</p>
+
+
+
+
+
+
+        </footer>
+
+
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/materialize/js/materialize.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿#cabezote {
+    height: 180px;
+    width: 100%;
+    background-color: #ff4d4d;
+    text-align:center;
+    font-size:60px;
+   color:white;
+}
+#sub-cabezote {
+    height: 50px;
+    width: 100%;
+    background-color: #ff1a1a;
+}
+#titulo {
+    text-align: center;
+    color: #ff4d4d;
+}
+footer {
+    text-align: center;
+    float: none;
+    height: 130px;
+    width: 100%;
+    background-color: #ff4d4d;
+    font-size: 35px;
+    font-family: sans-serif;
+}
+#clase{
+    position:relative;
+    top: -100px;
+    float:right;
+}
+
+

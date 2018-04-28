@@ -1,0 +1,106 @@
+﻿@model IEnumerable<_03.Parcial.Clase>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Bienvenidos</title>
+</head>
+<body>
+
+    <div ng-app="clases" ng-controller="clasescontroller">
+        <div class="row">
+            <div class="col" s6>
+
+                <h2>Bienvenidos</h2>
+
+                <p>
+                    <a href="http://localhost:57588/Clases/Create" class="btn waves-effect waves-light">Crear uno nuevo</a>
+
+                </p>
+
+            </div>
+
+            <table class="table">
+                <tr>
+                    <th>
+                        Descripcion Baile
+                    </th>
+                    <th>
+                        Nombre Baile
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr ng-repeat="clase in listaclases">
+
+                        <td>
+                            {{clase.Descripcion_Baile}}
+                        </td>
+                        <td>
+                            {{clase.Nombre_Baile}}
+                        </td>
+                        <td>
+                            {{clase.Nombre}}
+                        </td>
+                        <td>
+
+
+                            @Html.ActionLink("Editar", "Edit", new { id = item.Id_Clase })
+                            @Html.ActionLink("Detalles", "Details", new { id = item.Id_Clase })
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id_Clase })
+
+                        </td>
+                    </tr>
+
+                }
+                </table>
+            </div>
+        </div>
+
+        <!--=====================================
+                    Lista por defecto
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcion_Baile)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre_Baile)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cliente.Nombre)
+                </th>
+                <th></th>
+            </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion_Baile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre_Baile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente.Nombre)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id=item.Id_Clase }) |
+                    @Html.ActionLink("Detalles", "Details", new { id=item.Id_Clase }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id=item.Id_Clase })
+                </td>
+            </tr>
+        }
+
+        </table>
+               ======================================-->
+    </body>
+</html>

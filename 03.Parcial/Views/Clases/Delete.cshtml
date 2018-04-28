@@ -1,0 +1,48 @@
+﻿@model _03.Parcial.Clase
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Esta seguro que desea eliminar este usuario</h3>
+<div>
+    <h4>Clase</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion_Baile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion_Baile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre_Baile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Baile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a la Lista", "Index")
+        </div>
+    }
+</div>

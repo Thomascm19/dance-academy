@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="baileModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Calendario">
+          <Key>
+            <PropertyRef Name="Id_Baile" />
+          </Key>
+          <Property Name="Id_Baile" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="Id_Clase" Type="int" />
+        </EntityType>
+        <EntityType Name="Clase">
+          <Key>
+            <PropertyRef Name="Id_Clase" />
+          </Key>
+          <Property Name="Id_Clase" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion_Baile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Codigo_Cliente" Type="int" />
+          <Property Name="Nombre_Baile" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Codigo_Cliente" />
+          </Key>
+          <Property Name="Codigo_Cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Cedula" />
+          </Key>
+          <Property Name="Cedula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Calendario_Clase1">
+          <End Role="Clase" Type="Self.Clase" Multiplicity="0..1" />
+          <End Role="Calendario" Type="Self.Calendario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase">
+              <PropertyRef Name="Id_Clase" />
+            </Principal>
+            <Dependent Role="Calendario">
+              <PropertyRef Name="Id_Clase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clase_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Clase" Type="Self.Clase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Codigo_Cliente" />
+            </Principal>
+            <Dependent Role="Clase">
+              <PropertyRef Name="Codigo_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="baileModelStoreContainer">
+          <EntitySet Name="Calendario" EntityType="Self.Calendario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clase" EntityType="Self.Clase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Calendario_Clase1" Association="Self.FK_Calendario_Clase1">
+            <End Role="Clase" EntitySet="Clase" />
+            <End Role="Calendario" EntitySet="Calendario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clase_Cliente" Association="Self.FK_Clase_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Clase" EntitySet="Clase" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="baileModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Calendario">
+          <Key>
+            <PropertyRef Name="Id_Baile" />
+          </Key>
+          <Property Name="Id_Baile" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="Id_Clase" Type="Int32" />
+          <NavigationProperty Name="Clase" Relationship="Self.FK_Calendario_Clase1" FromRole="Calendario" ToRole="Clase" />
+        </EntityType>
+        <EntityType Name="Clase">
+          <Key>
+            <PropertyRef Name="Id_Clase" />
+          </Key>
+          <Property Name="Id_Clase" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion_Baile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo_Cliente" Type="Int32" />
+          <Property Name="Nombre_Baile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Calendario" Relationship="Self.FK_Calendario_Clase1" FromRole="Clase" ToRole="Calendario" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Clase_Cliente" FromRole="Clase" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Codigo_Cliente" />
+          </Key>
+          <Property Name="Codigo_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Clase" Relationship="Self.FK_Clase_Cliente" FromRole="Cliente" ToRole="Clase" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Cedula" />
+          </Key>
+          <Property Name="Cedula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Calendario_Clase1">
+          <End Role="Clase" Type="Self.Clase" Multiplicity="0..1" />
+          <End Role="Calendario" Type="Self.Calendario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase">
+              <PropertyRef Name="Id_Clase" />
+            </Principal>
+            <Dependent Role="Calendario">
+              <PropertyRef Name="Id_Clase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clase_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Clase" Type="Self.Clase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Codigo_Cliente" />
+            </Principal>
+            <Dependent Role="Clase">
+              <PropertyRef Name="Codigo_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="baileEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Calendario" EntityType="Self.Calendario" />
+          <EntitySet Name="Clase" EntityType="Self.Clase" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Calendario_Clase1" Association="Self.FK_Calendario_Clase1">
+            <End Role="Clase" EntitySet="Clase" />
+            <End Role="Calendario" EntitySet="Calendario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clase_Cliente" Association="Self.FK_Clase_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Clase" EntitySet="Clase" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="baileModelStoreContainer" CdmEntityContainer="baileEntities">
+          <EntitySetMapping Name="Calendario">
+            <EntityTypeMapping TypeName="baileModel.Calendario">
+              <MappingFragment StoreEntitySet="Calendario">
+                <ScalarProperty Name="Id_Baile" ColumnName="Id_Baile" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Id_Clase" ColumnName="Id_Clase" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clase">
+            <EntityTypeMapping TypeName="baileModel.Clase">
+              <MappingFragment StoreEntitySet="Clase">
+                <ScalarProperty Name="Id_Clase" ColumnName="Id_Clase" />
+                <ScalarProperty Name="Descripcion_Baile" ColumnName="Descripcion_Baile" />
+                <ScalarProperty Name="Codigo_Cliente" ColumnName="Codigo_Cliente" />
+                <ScalarProperty Name="Nombre_Baile" ColumnName="Nombre_Baile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="baileModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="Codigo_Cliente" ColumnName="Codigo_Cliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="baileModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

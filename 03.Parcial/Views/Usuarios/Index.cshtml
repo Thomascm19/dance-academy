@@ -1,0 +1,115 @@
+﻿@model IEnumerable<_03.Parcial.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Bienvenidos</title>
+</head>
+<body>
+    <div ng-app="usuarios" ng-controller="usuarioscontroller">
+        <div class="row">
+            <div class="col" s6>
+
+                <h2>Bienvenidos</h2>
+                <p>
+                    <a href="http://localhost:57588/Usuarios/Create" class="btn waves-effect waves-light">Crear uno nuevo</a>
+                </p>
+            </div>
+
+            <table class="table">
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Apellido
+                    </th>
+                    <th>
+                        Direccion
+                    </th>
+                    <th>
+                        Email
+                    </th>
+
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr ng-repeat="usuario in listausuarios">
+
+                        <td>
+                            {{usuario.Nombre}}
+                        </td>
+                        <td>
+                            {{usuario.Apellido}}
+                        </td>
+                        <td>
+                            {{usuario.Direccion}}
+                        </td>
+                        <td>
+                            {{usuario.Email}}
+                        </td>
+                        <td>
+
+
+                            @Html.ActionLink("Editar", "Edit", new { id = item.Cedula })
+                            @Html.ActionLink("Detalles", "Details", new { id = item.Cedula })
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.Cedula })
+
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+    <!--=====================================
+            Lista por defecto
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id=item.Cedula }) |
+                @Html.ActionLink("Detalles", "Details", new { id=item.Cedula }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id=item.Cedula })
+            </td>
+        </tr>
+    }
+
+    </table>
+                        ======================================-->
+</body>
+</html>

@@ -1,0 +1,122 @@
+﻿@model IEnumerable<_03.Parcial.Cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Bienvenidos</title>
+</head>
+<body>
+    
+    <div ng-app="clientes" ng-controller="clientescontroller">
+        <div class="row">
+            <div class="col" s6>
+
+                <h2>Bienvenidos</h2>
+
+                <p>
+                    <a href="http://localhost:57588/Clientes/Create" class="btn waves-effect waves-light">Crear uno nuevo</a>
+                    
+                </p>
+                <div class="input-field col s12">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Ingrese el Nombre</label>
+                </div>
+            </div>
+
+            <table class="table">
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Apellido
+                    </th>
+                    <th>
+                        Direccion
+                    </th>
+                    <th>
+                        Email
+                    </th>
+
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr ng-repeat="cliente in listaclientes">
+
+                        <td>
+                            {{cliente.Nombre}}
+                        </td>
+                        <td>
+                            {{cliente.Apellido}}
+                        </td>
+                        <td>
+                            {{cliente.Direccion}}
+                        </td>
+                        <td>
+                            {{cliente.Email}}
+                        </td>
+                        <td>
+
+
+                            @Html.ActionLink("Editar", "Edit", new { id = item.Codigo_Cliente})
+                            @Html.ActionLink("Detalles", "Details", new { id = item.Codigo_Cliente})
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.Codigo_Cliente})
+
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+    <!--=====================================
+                Lista por defecto
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id=item.Codigo_Cliente }) |
+                @Html.ActionLink("Detalles", "Details", new { id=item.Codigo_Cliente }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id=item.Codigo_Cliente })
+            </td>
+        </tr>
+    }
+
+    </table>
+         ======================================-->
+</body>
+</html>

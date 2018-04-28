@@ -1,0 +1,42 @@
+﻿@model _03.Parcial.Clase
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Clase</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion_Baile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion_Baile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre_Baile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Baile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id_Clase }) |
+    @Html.ActionLink("Volver a la Lista", "Index")
+</p>
