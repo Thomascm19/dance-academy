@@ -3,20 +3,20 @@
     ViewBag.Title = "index";
 }
 <div id="titulo"><h2>Administracion</h2></div>
+<div id="contenedor" class="row">
+    <div id="cajas" class="col l3 s12">
+        <div id="caja1" class="iconos">
+            <a href="@Url.Action("Index", "Usuarios")"><i class="large material-icons">supervisor_account</i></a>
 
-<div id="usuarios">
-    <a href="/Clientes/Create?class=large%20material-icons"><i class="large material-icons">supervisor_account</i></a>
-    <a href="/Usuarios/Create?class=large%20material-icons"><i class="large material-icons">account_circle</i></a>
+            <a href="@Url.Action("Index", "Clientes")"><i class="large material-icons">account_circle</i></a>
+            <h4>Clientes   Usuarios</h4>
+           
+        </div>
+        <div id="caja2" class="iconos">
+            <a href="@Url.Action("Index", "Clases")"><i class="large material-icons">assignment_return</i></a>
+            <a href="@Url.Action("Index", "Calendarios")"><i class="large material-icons">assignment</i></a>
+            <h4>Clases   Calendario</h4>
+        </div>
+    </div>
 
 </div>
-
-<div id="clase">
-
-    <a href="http://localhost:57588/Clases/Create?class=large%20material-icons"><i class="large material-icons">assignment_return</i></a>
-
-    <a href="/Calendarios/Create?class=large%20material-icons"><i class="large material-icons">assignment</i></a>
-    
-
-
-</div>
-
