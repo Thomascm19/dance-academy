@@ -5,14 +5,16 @@
     height: 180px;
     width: 100%;
     background-color: #ff4d4d;
-    text-align:center;
-    font-size:60px;
-   color:white;
+    text-align: center;
+    font-size: 60px;
+    color: white;
+    position: relative;
+    top: -33px;
 }
-#sub-cabezote {
-    height: 50px;
-    width: 100%;
-    background-color: #ff1a1a;
+#nav {
+    height: auto;
+    position: relative;
+    top: -35px;
 }
 #titulo {
     text-align: center;
@@ -26,11 +28,6 @@ footer {
     background-color: #ff4d4d;
     font-size: 20px;
     font-family: sans-serif;
-}
-#clase{
-    position:relative;
-    top: -100px;
-    float:right;
 }
 #contenedor {
     display: inline-block;
