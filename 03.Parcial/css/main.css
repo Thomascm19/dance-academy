@@ -21,10 +21,10 @@
 footer {
     text-align: center;
     float: none;
-    height: 130px;
+    height: auto;
     width: 100%;
     background-color: #ff4d4d;
-    font-size: 35px;
+    font-size: 20px;
     font-family: sans-serif;
 }
 #clase{
