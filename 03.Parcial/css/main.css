@@ -1,6 +1,9 @@
 ﻿* {
     font-family: 'Skranji', cursive;
 }
+select {
+    display: -webkit-box;
+}
 #cabezote {
     height: 180px;
     width: 100%;
